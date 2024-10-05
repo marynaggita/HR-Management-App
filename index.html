@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HR Management System</h1>
+        </header>
+        <main>
+            <section class="section">
+                <h2>Generate Employee Code</h2>
+                <button id="generateCodeBtn">Generate Employee Code</button>
+                <p id="employeeCodeOutput" class="output"></p>
+            </section>
+            <section id="employeeform">
+                <h2>Register Employee</h2>
+                <form id="registrationForm">
+                    <label for="employeeCode">Employee Code:</label>
+                    <input type="text" id="employeeCode" required><br><br>
+                    
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" required><br><br>
+                    
+                    <label for="otherName">Other Name:</label>
+                    <input type="text" id="otherName" required><br><br>
+            
+                    <label for="dateOfBirth">Date of Birth:</label>
+                    <input type="date" id="dateOfBirth" required><br><br>
+
+                    <label for="idPhoto">Upload ID Photo (Optional):</label>
+                    <input type="file" id="idPhoto" accept="image/*" onchange="encodeImageFileAsURL()">
+                    
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+           
+            <section id="employee-retrieval">
+                <h2>Retrieve Employee</h2>
+                <input type="text" id="employeeNumber" placeholder="Employee Number">
+                <button id="retrieveButton">Retrieve Employee</button>
+                <div id="employeeDetails"></div>
+            </section>
+
+             <section id="employee-update" style="display: none;">
+                <h2>Update Employee</h2>
+                <input type="hidden" id="updateEmployeeNumber">
+                <input type="date" id="updateDateOfBirth" placeholder="New Date of Birth" required>
+                <input type="file" id="updateIdPhoto" accept="image/*" onchange="encodeUpdateImageFileAsURL()">
+                <button id="updateButton">Update Employee</button>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 HR Management System</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
