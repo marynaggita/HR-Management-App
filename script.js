@@ -1,14 +1,27 @@
 document.getElementById("generateCodeBtn").addEventListener("click", async () => {
+    // Clear previous output
+    document.getElementById("employeeCodeOutput").innerText = "";
+
     const response = await fetch("http://localhost:8080/GenerateEmployeeId", { method: "POST" });
-    const employeeCode = await response.text();
-    document.getElementById("employeeCodeOutput").innerText = "Generated Employee Code: " + employeeCode;
+    
+    if (response.ok) {
+        const employeeCode = await response.text();
+        document.getElementById("employeeCodeOutput").innerText = "Generated Employee Code: " + employeeCode;
+
+        // Clear the output after a delay (optional)
+        setTimeout(() => {
+            document.getElementById("employeeCodeOutput").innerText = "";
+        }, 1800000); // Clear after 3 seconds
+    } else {
+        alert("Error generating employee code. Please try again.");
+    }
 });
 
 
 function encodeImageFileAsURL() {
     const fileInput = document.getElementById('idPhoto');
     const file = fileInput.files[0];
-    
+
     if (file) {
         const reader = new FileReader();
         reader.onloadend = function() {
@@ -16,12 +29,17 @@ function encodeImageFileAsURL() {
             window.base64ImageString = reader.result;
         };
         reader.readAsDataURL(file);
+    } else {
+        // Clear base64ImageString if no file is selected
+        window.base64ImageString = null;
     }
 }
 
+// Handle form submission
 document.getElementById("registrationForm").addEventListener("submit", async function(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
+    // Gather data from the form
     const employeeCode = document.getElementById("employeeCode").value;
     const surname = document.getElementById("surname").value;
     const otherName = document.getElementById("otherName").value;
@@ -51,15 +69,19 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
         const result = await response.json();
         
         if (response.ok) {
-            alert( result.message);
+            alert(result.message); // Show success message
+            // Clear the form fields after successful registration
+            document.getElementById("registrationForm").reset();
+            window.base64ImageString = null; // Clear the Base64 image string
         } else {
-            alert("Error: " + result.message);
+            alert("Error: " + result.message); // Show error message
         }
     } catch (error) {
         console.error("Error:", error);
         alert("An error occurred while registering the employee.");
     }
 });
+
 
 // document.getElementById('retrieveButton').addEventListener('click', function() {
 //     // const employeeNumber = document.getElementById('employeeNumber').value;
@@ -110,20 +132,22 @@ function displayEmployees(employee, showEditButton) {
 
     // Construct HTML for the employee
     let employeeHTML = `
-        <div>
-            ${employee.idPhoto ? `<img class="employee-photo" src="${employee.idPhoto}" alt="Employee Photo" />` : '<p>No Photo Available</p>'}
-            <p><strong>Employee Number:</strong> ${employee.employeeNumber}</p>
-            <p><strong>Surname:</strong> ${employee.surname}</p>
-            <p><strong>Other Name:</strong> ${employee.otherName}</p>
-            <p><strong>Date of Birth:</strong> ${employee.dateOfBirth}</p>
+        <div class="employee-card">
+            <div class="employee-info">
+                ${employee.idPhoto ? `<img class="employee-photo" src="${employee.idPhoto}" alt="Employee Photo" />` : '<p>No Photo Available</p>'}
+                <div class="employee-details">
+                    <p><strong>Employee Number:</strong> ${employee.employeeNumber}</p>
+                    <p><strong>Surname:</strong> ${employee.surname}</p>
+                    <p><strong>Other Name:</strong> ${employee.otherName}</p>
+                    <p><strong>Date of Birth:</strong> ${employee.dateOfBirth}</p>
+                </div>
+            </div>
         </div>
-        <hr>
     `;
 
     // Add an Edit button only if it's a single employee detail queried
     if (showEditButton) {
-        employeeHTML += `<button id="editButton" onclick="enableUpdateFields('${employee.employeeNumber}', '${employee.dateOfBirth}', '${employee.idPhoto}')">Edit</button>`;
-    }
+        employeeHTML += `<button class="edit-button" id="editButton" onclick="enableUpdateFields('${employee.employeeNumber}', '${employee.dateOfBirth}', '${employee.idPhoto}')">EDIT EMPLOYEE DETAILS</button>`;    }
 
     employeeDetailsDiv.innerHTML += employeeHTML; // Append to the details div
 }

@@ -5,20 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Management System</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc; /* Add a border around each section */
+            border-radius: 5px; /* Round the corners of the sections */
+            background-color: #fafafa; /* Light background for better separation */
+        }
+
+        section h2 {
+            border-bottom: 2px solid #4CAF50; /* Underline the section titles */
+            padding-bottom: 5px; /* Add some space below the title */
+        }
+
+        input[type="text"], input[type="date"], input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .employee-photo {
+            width: 100px;  /* Set your desired width */
+            height: auto;  /* Maintain aspect ratio */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>HR Management System</h1>
         </header>
+
         <main>
-            <section class="section">
-                <h2>Generate Employee Code</h2>
+            <!-- Section for Generating Employee Code -->
+            <section class="section" id="generate-code-section">
+                <h2>Generate Employee Code</h2></br></br>
                 <button id="generateCodeBtn">Generate Employee Code</button>
                 <p id="employeeCodeOutput" class="output"></p>
             </section>
-            <section id="employeeform">
-                <h2>Register Employee</h2>
+
+            <!-- Section for Employee Registration -->
+            <section class="section" id="registration-section">
+                <h2>Register Employee</h2></br></br>
                 <form id="registrationForm">
                     <label for="employeeCode">Employee Code:</label>
                     <input type="text" id="employeeCode" required><br><br>
@@ -38,26 +119,34 @@
                     <button type="submit">Register</button>
                 </form>
             </section>
-           
-            <section id="employee-retrieval">
-                <h2>Retrieve Employee</h2>
+
+            <!-- Section for Employee Retrieval -->
+            <section class="section" id="employee-retrieval-section">
+                <h2>Retrieve Employee</h2></br></br>
                 <input type="text" id="employeeNumber" placeholder="Employee Number">
-                <button id="retrieveButton">Retrieve Employee</button>
-                <div id="employeeDetails"></div>
+                <button id="retrieveButton">Retrieve Employee</button></br></br>
+                <div id="employeeDetails" class="employee-container"></div>
             </section>
 
-             <section id="employee-update" style="display: none;">
-                <h2>Update Employee</h2>
+            <!-- Section for Employee Update -->
+            <section class="section" id="employee-update" style="display: none;">
+                <h2>Update Employee</h2></br></br>
                 <input type="hidden" id="updateEmployeeNumber">
-                <input type="date" id="updateDateOfBirth" placeholder="New Date of Birth" required>
+                <label for="updateDateOfBirth">New Date of Birth:</label>
+                <input type="date" id="updateDateOfBirth" required>
+                
+                <label for="updateIdPhoto">Upload New ID Photo (Optional):</label>
                 <input type="file" id="updateIdPhoto" accept="image/*" onchange="encodeUpdateImageFileAsURL()">
+                
                 <button id="updateButton">Update Employee</button>
             </section>
         </main>
+
         <footer>
             <p>&copy; 2024 HR Management System</p>
         </footer>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

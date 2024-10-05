@@ -31,6 +31,15 @@ main {
 
 section {
     margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc; /* Add a border around each section */
+    border-radius: 5px; /* Round the corners of the sections */
+    background-color: #fafafa; /* Light background for better separation */
+}
+
+section h2 {
+    border-bottom: 2px solid #4CAF50; /* Underline the section titles */
+    padding-bottom: 5px; /* Add some space below the title */
 }
 
 input[type="text"], input[type="date"], input[type="file"] {
@@ -58,7 +67,48 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
+
+#employeeDetails {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+    gap: 15px; /* Space between the grid items */
+}
+
+.employee-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.employee-info {
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Center align items vertically */
+    margin-bottom: 10px; /* Space between employee cards */
+}
+
 .employee-photo {
-    width: 100px;  /* Set your desired width */
-    height: auto;  /* Maintain aspect ratio */
+    width: 130px; /* Set desired width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Space between image and text */
+}
+
+.employee-details {
+    flex-grow: 1; /* Allow details section to grow and take up remaining space */
+}
+.edit-button {
+    background-color: #f3f7f3; /* Bootstrap Primary Color */
+    color: rgb(5, 0, 0); /* Text color */
+    border: none; /* Remove default border */
+    padding: 10px 15px; /* Add padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+}
+
+.edit-button:hover {
+    background-color: #eaefea; /* Darker shade on hover */
+    transform: scale(1.00); /* Slightly enlarge on hover */
 }
