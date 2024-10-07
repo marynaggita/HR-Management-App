@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src *; connect-src *;">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+        </header>
+
+<main>
+    <section class="section" id="generate-code-section">
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h2> Code Requests</h2>
+                <p id="totalRequests">0</p>
+            </div>
+            <div class="dashboard-card">
+                <h2> Employee Registrations</h2>
+                <p id="totalRegistrations">0</p>
+            </div>
+            <div class="dashboard-card">
+                <h2>Failed requests</h2>
+                <p id="totalFailedRequests">0</p>
+            </div>
+        </div></section>
+        <!-- Section for Employee Registration -->
+        <section class="section" id="registration-section">
+            <h2>New User Onboarding</h2></br></br>
+            <form id="registrationForm">
+                <label for="employeeCode">Employee Code:</label>
+                <input type="text" id="employeeCode" required><br><br>
+                
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" required><br><br>
+                
+                <label for="otherName">Other Name:</label>
+                <input type="text" id="otherName" required><br><br>
+        
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" required><br><br>
+
+                <label for="idPhoto">Upload ID Photo (Optional):</label>
+                <input type="file" id="idPhoto" accept="image/*" onchange="encodeImageFileAsURL()">
+                
+                <button type="submit">Register</button></br></br>
+            
+                <label id="employeeNumberOutput"></label>
+            </form>
+        </section>
+    </main>
+        
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 HR Management System</p>
+        </footer>
+    </div>
+    
+
+    <script src="admin.js"></script>
+</body>
+</html>

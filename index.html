@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="http://127.0.0.1:5500/favicon.ico" type="image/x-icon">
     <title>HR Management System</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>HR Management System</h1>
+            <h1>xxxxx</h1>
+            <button id="adminPageBtn" onclick="openModal()">Go to Admin Page</button> <!-- Admin Button -->
         </header>
         <main>
-            <section class="section">
-                <h2>Generate Employee Code</h2>
+            <!-- Section for Generating Employee Code -->
+            <section class="section" id="generate-code-section">
+                <h2>Generate Employee Code</h2></br></br>
                 <button id="generateCodeBtn">Generate Employee Code</button>
                 <p id="employeeCodeOutput" class="output"></p>
             </section>
-            <section id="employeeform">
-                <h2>Register Employee</h2>
+
+            <!-- Section for Employee Registration -->
+            <section class="section" id="registration-section">
+                <h2>Register Employee</h2></br></br>
                 <form id="registrationForm">
                     <label for="employeeCode">Employee Code:</label>
                     <input type="text" id="employeeCode" required><br><br>
@@ -35,29 +40,80 @@
                     <label for="idPhoto">Upload ID Photo (Optional):</label>
                     <input type="file" id="idPhoto" accept="image/*" onchange="encodeImageFileAsURL()">
                     
-                    <button type="submit">Register</button>
+                    <button type="submit">Register</button></br></br>
+                
+                    <label id="employeeNumberOutput"></label>
                 </form>
             </section>
-           
-            <section id="employee-retrieval">
-                <h2>Retrieve Employee</h2>
+
+            <!-- Section for Employee Retrieval -->
+            <section class="section" id="employee-retrieval-section">
+                <h2>Retrieve Employee</h2></br></br>
                 <input type="text" id="employeeNumber" placeholder="Employee Number">
-                <button id="retrieveButton">Retrieve Employee</button>
-                <div id="employeeDetails"></div>
+                <button id="retrieveButton">Retrieve Employee</button></br></br>
+                <div id="employeeDetails" class="employee-container"></div>
             </section>
 
-             <section id="employee-update" style="display: none;">
-                <h2>Update Employee</h2>
+            <!-- Section for Employee Update -->
+            <section class="section" id="employee-update" style="display: none;">
+                <h2>Update Employee Details</h2></br></br>
                 <input type="hidden" id="updateEmployeeNumber">
-                <input type="date" id="updateDateOfBirth" placeholder="New Date of Birth" required>
+                <label for="updateDateOfBirth">New Date of Birth:</label>
+                <input type="date" id="updateDateOfBirth" required>
+                
+                <label for="updateIdPhoto">Upload New ID Photo (Optional):</label>
                 <input type="file" id="updateIdPhoto" accept="image/*" onchange="encodeUpdateImageFileAsURL()">
+                
                 <button id="updateButton">Update Employee</button>
             </section>
         </main>
+
         <footer>
             <p>&copy; 2024 HR Management System</p>
         </footer>
     </div>
+
+    <!-- Authentication Modal -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+            </div>
+            <button id="loginButton" type="button" onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="toggleToRegister()">Register here</a></p>
+        </form>
+    </div>
+</div>
+
+<!-- Registration Modal -->
+<div id="registerModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeRegisterModal()">&times;</span>
+        <h2>Create an Account</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="regUsername">Username:</label>
+                <input type="text" id="regUsername" required placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" required placeholder="Choose a password">
+            </div>
+            <button id="registerButton" type="button" onclick="register()">Register</button>
+            <p>Already have an account? <a href="#" onclick="toggleToLogin()">Login here</a></p>
+        </form>
+    </div>
+</div>
+
+    
     <script src="script.js"></script>
 </body>
 </html>
