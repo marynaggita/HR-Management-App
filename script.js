@@ -272,7 +272,19 @@ async function retrieveEmployee() {
     }
 
     try {
-        const response = await fetch(url);
+        const username = sessionStorage.getItem("username");
+        const password = sessionStorage.getItem("password");
+        console.log('username: ',username)
+        console.log('password: ',password)
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "username": username,
+                "password": password
+            },
+        });
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message || "Error retrieving employee data");
@@ -366,6 +378,8 @@ async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
     try {
         const username = sessionStorage.getItem("username");
         const password = sessionStorage.getItem("password");
+        console.log('username: ',username)
+        console.log('password: ',password)
 
         if (!username || !password) {
             alert("Please login first.");
