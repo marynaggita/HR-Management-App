@@ -202,10 +202,20 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
     console.log("Sending Registration Request:", JSON.stringify(registrationData, null, 2));
 
     try {
+        const username = sessionStorage.getItem("username");
+        const password = sessionStorage.getItem("password");
+
+        if (!username || !password) {
+            alert("Please login first.");
+            return;
+        }
         const response = await fetch("http://localhost:8080/EmployeeRequest", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "username": username,
+                "password": password
+            
             },
             body: JSON.stringify(registrationData)
         });
@@ -346,6 +356,7 @@ document.getElementById('updateButton').addEventListener('click', async function
 });
 
 async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
+    
     const url = `http://localhost:8080/employees/${employeeNumber}`; // Adjust URL to match your API endpoint
     const body = {
         dateOfBirth: dateOfBirth,
@@ -353,10 +364,19 @@ async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
     };
 
     try {
+        const username = sessionStorage.getItem("username");
+        const password = sessionStorage.getItem("password");
+
+        if (!username || !password) {
+            alert("Please login first.");
+            return;
+        }
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "username": username,
+                "password": password
             },
             body: JSON.stringify(body)
         });
