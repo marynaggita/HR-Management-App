@@ -15,7 +15,7 @@ async function fetchFailedRequestMetrics() {
         if (response.ok) {
             const metrics = await response.json();
             document.getElementById('totalFailedRequests').innerText = metrics.totalFailedRequests;
-            // Add logic to display other metrics
+            
         }
     } catch (error) {
         console.error("Error fetching failed request metrics:", error);

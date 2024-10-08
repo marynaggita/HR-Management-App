@@ -92,8 +92,8 @@ footer {
 
 #employeeDetails {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
-    gap: 15px; /* Space between the grid items */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px; 
 }
 
 .employee-card {
@@ -105,34 +105,34 @@ footer {
 }
 
 .employee-info {
-    display: flex; /* Use Flexbox for layout */
-    align-items: center; /* Center align items vertically */
-    margin-bottom: 10px; /* Space between employee cards */
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
 }
 
 .employee-photo {
-    width: 130px; /* Set desired width */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 15px; /* Space between image and text */
+    width: 130px; 
+    height: auto; 
+    margin-right: 15px;
 }
 
 .employee-details {
-    flex-grow: 1; /* Allow details section to grow and take up remaining space */
+    flex-grow: 1;
 }
 .edit-button {
-    background-color: #f3f7f3; /* Bootstrap Primary Color */
-    color: rgb(5, 0, 0); /* Text color */
-    border: none; /* Remove default border */
-    padding: 10px 15px; /* Add padding */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    background-color: #f3f7f3; 
+    color: rgb(5, 0, 0); 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    font-size: 15px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; 
 }
 
 .edit-button:hover {
-    background-color: #eaefea; /* Darker shade on hover */
-    transform: scale(1.00); /* Slightly enlarge on hover */
+    background-color: #eaefea; 
+    transform: scale(1.00);
 }
 body {
     font-family: 'Arial', sans-serif;
@@ -159,7 +159,7 @@ body {
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     padding: 20px;
 }
@@ -205,48 +205,42 @@ body {
     gap: 20px;
     padding: 20px;
 }
-/* Modal Styles */
-/* Modal Styles */
-
-
-
-
 
 .form-group {
-    margin-bottom: 15px; /* Space between form fields */
+    margin-bottom: 15px; 
 }
 
 label {
-    margin-bottom: 5px; /* Space between label and input */
-    font-weight: bold; /* Make labels bold for emphasis */
-    display: block; /* Make labels block elements */
-    color: #555; /* Lighter dark color for labels */
+    margin-bottom: 5px; 
+    font-weight: bold;
+    display: block; 
+    color: #555; 
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.7); 
 }
 
 .modal-content {
-    background-color: #fefefe; /* White background */
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px; /* Padding around the content */
-    border: 1px solid #888; /* Light gray border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    width: 400px; /* Set a width for the modal */
+    background-color: #fefefe; 
+    margin: 15% auto; 
+    padding: 20px; 
+    border: 1px solid #888; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 400px; 
 }
 .close {
-    float: right; /* Position close button */
-    font-size: 24px; /* Size of close button */
-    font-weight: bold; /* Make close button bold */
-    cursor: pointer; /* Pointer cursor */
+    float: right; 
+    font-size: 24px; 
+    font-weight: bold; 
+    cursor: pointer; 
 }

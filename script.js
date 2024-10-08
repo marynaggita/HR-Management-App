@@ -84,26 +84,22 @@ async function register() {
 }
 // Function to navigate to admin page
 function goToHomePage() {
-    window.location.href = '/index.html'; // Change to your admin page URL
+    window.location.href = '/index.html'; 
 }
 
 // Automatically open the modal when the page loads
 window.onload = function() {
-    openModal(); // Open the modal on page load
+    openModal(); // 
 };
 
+
 function goToAdminPage() {
-    window.location.href = 'admin.html'; // Adjust the URL to your actual admin page
+    window.location.href = 'admin.html'; 
 }
 
 // Function to generate employee code
 document.getElementById("generateCodeBtn").addEventListener("click", async () => {
 
-    // Clear previous output
-    // document.getElementById("employeeCodeOutput").innerText = "";
-
-    // try {
-    //     const response = await fetch("http://localhost:8080/GenerateEmployeeId", { method: "POST" });
     try {
         // Retrieve cached credentials
         const username = sessionStorage.getItem("username");
@@ -224,7 +220,7 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
         
         if (response.ok) {
             alert(result.message); // Show success message
-            console.log("Employee Number: " + result.employeeNumber); // Log or display the employee number
+            console.log("Employee Number: " + result.employeeNumber); // display the employee number
             document.getElementById('employeeNumberOutput').innerText = "Employee Number: " + result.employeeNumber;
             // Clear the form fields after successful registration
             document.getElementById("registrationForm").reset();
@@ -342,8 +338,6 @@ function enableUpdateFields(employeeNumber, dateOfBirth, idPhoto) {
     document.getElementById('updateEmployeeNumber').value = employeeNumber;
     document.getElementById('updateDateOfBirth').value = dateOfBirth;
     document.getElementById('employee-update').style.display = 'block'; // Show the update section
-
-    // If there's an existing photo, you can add additional logic here if needed
 }
 
 // Update employee data
@@ -369,7 +363,7 @@ document.getElementById('updateButton').addEventListener('click', async function
 
 async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
     
-    const url = `http://localhost:8080/employees/${employeeNumber}`; // Adjust URL to match your API endpoint
+    const url = `http://localhost:8080/employees/${employeeNumber}`; 
     const body = {
         dateOfBirth: dateOfBirth,
         idPhoto: idPhoto
@@ -415,11 +409,3 @@ async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
 document.getElementById('retrieveButton').addEventListener('click', async function() {
     await retrieveEmployee();
 });
-function goToAdminPage() {
-    const password = prompt("Please enter the admin password:");
-    if (password === "1234") { // Change 'yourAdminPassword' to your actual password
-        window.location.href = 'admin.html'; // Redirect to the admin page
-    } else {
-        alert("Incorrect password. Access denied.");
-    }
-}
