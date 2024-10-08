@@ -42,8 +42,8 @@ function login() {
     .then(response => {
         if (response.ok) {
             alert('Authenticated successfully!');
-            closeModal(); // Close the modal
-            // goToHomePage(); // Navigate to the home page
+            closeModal(); 
+            
         } else {
             alert('Authentication failed!');
         }
@@ -101,6 +101,7 @@ function goToAdminPage() {
 document.getElementById("generateCodeBtn").addEventListener("click", async () => {
 
     try {
+        
         // Retrieve cached credentials
         const username = sessionStorage.getItem("username");
         const password = sessionStorage.getItem("password");
@@ -109,13 +110,14 @@ document.getElementById("generateCodeBtn").addEventListener("click", async () =>
             alert("Please login first.");
             return;
         }
+        let authHeader = 'Basic ' + btoa(username + ':' + password);
+        console.log("Authorization Header: ", authHeader);
 
         const response = await fetch("http://localhost:8080/GenerateEmployeeId", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "username": username,
-                "password": password
+                'Authorization': authHeader
             }
         });
 
@@ -205,13 +207,12 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
             alert("Please login first.");
             return;
         }
+        let authHeader = 'Basic ' + btoa(username + ':' + password);
         const response = await fetch("http://localhost:8080/EmployeeRequest", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "username": username,
-                "password": password
-            
+                'Authorization': authHeader
             },
             body: JSON.stringify(registrationData)
         });
@@ -272,13 +273,13 @@ async function retrieveEmployee() {
         const password = sessionStorage.getItem("password");
         console.log('username: ',username)
         console.log('password: ',password)
+        let authHeader = 'Basic ' + btoa(username + ':' + password);
 
         const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "username": username,
-                "password": password
+                'Authorization': authHeader
             },
         });
         if (!response.ok) {
@@ -379,12 +380,13 @@ async function updateEmployee(employeeNumber, dateOfBirth, idPhoto) {
             alert("Please login first.");
             return;
         }
+        let authHeader = 'Basic ' + btoa(username + ':' + password);
+
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                "username": username,
-                "password": password
+                'Authorization': authHeader
             },
             body: JSON.stringify(body)
         });
